@@ -1,0 +1,31 @@
+apiVersion: skaffold/v2beta27
+kind: Config
+profiles:
+  - name: counter-app
+    build:
+      artifacts:
+        - image: asia-southeast1-docker.pkg.dev/convint-testing/pallav/counter
+          context: .
+          sync:
+            infer:
+              - schema.gql
+              - src/**/*.*
+              - prisma/**/*.*
+    deploy:
+      helm:
+        releases:
+          - name: hello-world
+            chartPath: ./hello-world
+            valuesFiles:
+              - ./hello-world/values.yaml
+            artifactOverrides:
+              image: asia-southeast1-docker.pkg.dev/convint-testing/pallav/counter
+            namespace: default
+            skipBuildDependencies: true
+            # useHelmSecrets: true
+            imageStrategy:
+              helm: {}
+        flags:
+          upgrade:
+            - --install
+      statusCheckDeadlineSeconds: 500
