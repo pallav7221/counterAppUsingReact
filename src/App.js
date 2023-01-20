@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Counter</h1>
+      <h1>HELLO WELCOME TO COUNTER</h1>
       <h2 style={styles}>{counter}</h2>
       <button onClick={() => Handlechange(1)}>increase</button>
       <button onClick={() => Handlechange(-1)}>decrease</button>
