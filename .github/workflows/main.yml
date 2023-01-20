@@ -60,7 +60,7 @@ jobs:
 
       # Run Skaffold
       - name: Build and then deploy to GKE cluster with Skaffold
-        run: skaffold run -p dev-svc --default-repo asia-southeast1-docker.pkg.dev/convint-testing/pallav/counter --status-check
+        run: skaffold run -p counter-app --default-repo asia-southeast1-docker.pkg.dev/convint-testing/pallav/counter --status-check
 
       # Verify deployment
       - name: Verify deployment
